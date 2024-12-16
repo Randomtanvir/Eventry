@@ -27,7 +27,10 @@ const EventCard = ({ event }) => {
 
         {/* <!-- Buttons --> */}
         <div className="w-full flex gap-4 mt-4">
-          <ActionsButton />
+          <ActionsButton
+            eventId={event?.id}
+            interestedUserIds={event?.interested_ids}
+          />
         </div>
       </div>
     </div>

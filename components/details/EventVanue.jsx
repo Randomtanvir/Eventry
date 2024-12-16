@@ -1,5 +1,3 @@
-import React from "react";
-
 const EventVanue = ({ eventInfo }) => {
   return (
     <div className="overflow-hidden rounded-lg col-span-2 bg-[#242526]">

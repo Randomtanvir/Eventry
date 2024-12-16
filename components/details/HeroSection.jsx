@@ -29,7 +29,11 @@ const HeroSection = ({ eventInfo }) => {
         </div>
 
         <div className="w-full flex gap-4 mt-4 flex-1 ">
-          <ActionsButton fromDetails={true} />
+          <ActionsButton
+            eventId={eventInfo?.id}
+            interestedUserIds={eventInfo?.interested_ids}
+            fromDetails={true}
+          />
         </div>
       </div>
     </section>
