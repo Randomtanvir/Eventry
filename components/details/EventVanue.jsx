@@ -1,6 +1,6 @@
 import React from "react";
 
-const EventVanue = () => {
+const EventVanue = ({ eventInfo }) => {
   return (
     <div className="overflow-hidden rounded-lg col-span-2 bg-[#242526]">
       <div className="w-full">
@@ -15,9 +15,7 @@ const EventVanue = () => {
         ></iframe>
       </div>
       <div className="p-4">
-        <p className="text-[#9C9C9C] text-base mt-1">
-          Rangpur, Dhaka, Bangladesh, Rangpur, Bangladesh
-        </p>
+        <p className="text-[#9C9C9C] text-base mt-1">{eventInfo?.location}</p>
       </div>
     </div>
   );
