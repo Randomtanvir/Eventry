@@ -4,10 +4,15 @@ import {
   replaceMongoIdInArray,
   replaceMongoIdInObject,
 } from "@/utils/data-util";
-import mongoose from "mongoose";
 
-export const getAllEvents = async () => {
-  const allEvents = await eventModel.find().lean();
+export const getAllEvents = async (query) => {
+  let allEvents = [];
+  if (query) {
+    const regex = new RegExp(query, "i");
+    allEvents = await eventModel.find({ name: { $regex: regex } }).lean();
+  } else {
+    allEvents = await eventModel.find().lean();
+  }
 
   return replaceMongoIdInArray(allEvents);
 };
@@ -44,4 +49,10 @@ export const updateInterest = async (eventId, authId) => {
 
     await event.save();
   }
+};
+
+export const updateGiongIds = async (eventId, authId) => {
+  const event = await eventModel.findById(eventId);
+  event.going_ids.push(authId);
+  await event.save();
 };

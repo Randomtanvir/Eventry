@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import dummy from "@/public/google-io-2023-1.png";
 import ActionsButton from "../ActionsButton";
+import EventSchemaScript from "../meta/EventSchemaScript";
 
 const EventCard = ({ event }) => {
   return (
     <div className="overflow-hidden rounded-md bg-[#242526]">
+      <EventSchemaScript event={event} />
       <Image
         src={event.imageUrl}
         alt="Event 1"
@@ -25,11 +26,11 @@ const EventCard = ({ event }) => {
           <span>{event?.going_ids.length} Going</span>
         </div>
 
-        {/* <!-- Buttons --> */}
         <div className="w-full flex gap-4 mt-4">
           <ActionsButton
             eventId={event?.id}
             interestedUserIds={event?.interested_ids}
+            goingUserIds={event?.going_ids}
           />
         </div>
       </div>
