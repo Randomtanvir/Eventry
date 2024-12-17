@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import ActionsButton from "../ActionsButton";
 import EventSchemaScript from "../meta/EventSchemaScript";
+import { getBlurData } from "@/utils/blur-generator";
 
-const EventCard = ({ event }) => {
+const EventCard = async ({ event }) => {
+  const { base64 } = await getBlurData(event?.imageUrl);
   return (
     <div className="overflow-hidden rounded-md bg-[#242526]">
       <EventSchemaScript event={event} />
@@ -13,6 +15,8 @@ const EventCard = ({ event }) => {
         width={500}
         height={500}
         className="w-full"
+        placeholder="blur"
+        blurDataURL={base64}
       />
 
       <div className="p-3">
